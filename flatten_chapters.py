@@ -11,13 +11,13 @@ def flatten_chapters(y):
                 sub_chapters = a["chapters"] 
                 del a["chapters"]
                 if level>0:
-                    a["title"] = '*' * level + ' ' + a["title"]
+                    a["title"] = '#' * level + ' ' + a["title"]
                 out.append(a)
                 flatten(sub_chapters, level+1)
 
             else:
                 if level>0:
-                    a["title"] = '*' * level + ' ' + a["title"]
+                    a["title"] = '#' * level + ' ' + a["title"]
                 out.append(a)
             
     flatten(y)
