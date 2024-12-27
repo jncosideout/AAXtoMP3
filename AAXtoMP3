@@ -400,8 +400,14 @@ if [ "${level}" != "-1" ]; then
 fi
 
 # -----
+cleanup()
+{
+    rm -r -f "${working_directory}"
+    echo "exiting $0"
+    exit
+}
 # Clean up if someone hits ^c or the script exits for any reason.
-trap 'rm -r -f "${working_directory}"' EXIT
+trap cleanup EXIT
 
 # -----
 # Set up some basic working files ASAP.  Note the trap will clean this up no matter what.
