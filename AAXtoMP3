@@ -993,7 +993,7 @@ do
     fi
   fi
 
-  if [ -f "${cover_file}" ]; then
+  if [ -f "${cover_file}" ] && [ -s "${output_file}" ]; then
     log "Adding cover art"
     # FFMPEG does not support MPEG-4 containers fully #
     if [ "${container}" == "mp4" ] ; then
@@ -1015,8 +1015,8 @@ do
         -metadata:s:v title="Album cover" \
         -metadata:s:v comment="Cover (front)" \
         "${cover_output_file}"
-        # Replace original output file with version including cover
-        mv "${cover_output_file}" "${output_file}"
+      # Replace original output file with version including cover
+      mv "${cover_output_file}" "${output_file}"
     fi
   fi
 
