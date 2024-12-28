@@ -1025,8 +1025,10 @@ do
   if [ "$((${loglevel} > 0))" == "1" ]; then
     log "Complete ${title}"
   fi
-  # Lastly get rid of any extra stuff.
+  # Lastly get rid of any working files. The next iteration of this for loop processes a new aax file
+  # and with set -o noclobber we need to remove these files for the next aax file.
   rm "${metadata_file}"
+  rm "${flattened_chapters_file}"
 
   # Move the aax file if the decode is completed and the --complete_dir is set to a valid location.
   # Check the target dir for if set if it is writable
